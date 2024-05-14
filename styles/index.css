@@ -40,3 +40,8 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+
+.ListItem {
+    padding-right: 30px /* Add spacing between list items */
+}

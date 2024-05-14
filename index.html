@@ -4,28 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
     <header>
         <h1>Welcome to My Portfolio</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+            <nav>
+                <ul style="display: flex;">
+                    <li class="ListItem"><a href="index.html">Home</a></li>
+                    <li class="ListItem"><a href="about.html">About</a></li>
+                    <li class="ListItem"><a href="projects.html">Projects</a></li>
+                    <li class="ListItem"><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
     </header>
     <main>
         <section>
-            <h2>About Me</h2>
-            <p>This is a brief introduction about myself.</p>
+            <iframe id="about-iframe" src="about.html" width="600" height="300px" frameborder="0"></iframe>
         </section>
         <section>
-            <h2>Projects</h2>
-            <p>Here are some of my projects.</p>
+            <iframe id="projects-iframe" src="projects.html" width="600" frameborder="0"></iframe>
         </section>
     </main>
     <footer>
