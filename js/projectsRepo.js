@@ -3,7 +3,6 @@ async function getPublicRepositories(username) {
         const response = await fetch(`https://api.github.com/users/${username}/repos`);
         const repos = await response.json();
         const publicRepos = repos.filter(repo => !repo.private).map(repo => repo.name);
-        console.log(publicRepos);
         return publicRepos;
     } catch (error) {
         console.error('Error fetching public repositories:', error);
@@ -35,3 +34,8 @@ async function getReadmeContent(username, repoName) {
     }
 }
 
+
+
+window.onload = function() {
+    displayPublicRepositories();
+};
