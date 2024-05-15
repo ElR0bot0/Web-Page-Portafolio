@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects</title>
-    <link rel="stylesheet" href="styles/projects.css">
 </head>
-<h2>Projects</h2>
-<p>Here are some of my projects.</p>
+<body>
+    <h2>Projects</h2>
+    <h3>Github Repos:</h3>
+    <ul id="repo-list"></ul>
+    <script src="js/projects.js"></script>
+    <script>
+        window.onload = function() {
+            displayPublicRepositories();
+        };
+    </script>
+</body>
+</html>
