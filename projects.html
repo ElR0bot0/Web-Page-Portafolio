@@ -12,50 +12,49 @@
 <body>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>
-    var FOLDER_ID = '1rLCPLl4Ousu5ow-IsMPWhZ7BZjkdhhb9';    // the folder files reside in
-    var CLIENT_ID = '116037590128791091264.apps.googleusercontent.com';
-    var SCOPE =    '//https://www.googleapis.com/auth/drive'; 
-    [
-        'https://www.googleapis.com/auth/drive',
-        'https://www.googleapis.com/auth/drive.file',     // for description, 
-    ];
+        var FOLDER_ID = '1rLCPLl4Ousu5ow-IsMPWhZ7BZjkdhhb9';    // the folder files reside in
+        var CLIENT_ID = '116037590128791091264.apps.googleusercontent.com';
+        var SCOPE = [
+            'https://www.googleapis.com/auth/drive',
+            'https://www.googleapis.com/auth/drive.file'
+        ];
 
-    function rsvpCB(resp) {
-        var picAlbumLst = '<ul>\n';
-        for (i=0; i<resp.items.length; i++) 
-        picAlbumLst += (
-        '  <li>'+resp.items[i].id+',&nbsp;'+resp.items[i].title+',&nbsp;'+resp.items[i].description+'</li>\n');
-        picAlbumLst += "</ul>\n";
-        $('#container').append(picAlbumLst);
-    }
-    function rqstCB() {   //test @ https://developers.google.com/drive/v2/reference/files/list
-        var rv = gapi.client.drive.files.list({
-        'q': '"'+FOLDER_ID+'" in parents and trashed = false',
-        'fields' : 'items(id,title,description)'   //'items(id,title,description,indexableText)'   
-        }).execute(rsvpCB);
-    }
-    // authorization server reply
-    function onAuthResult(authResult) {
-        var authButton = document.getElementById('authorizeButton');
-        authButton.style.display = 'none';
-        if (authResult && !authResult.error) {  // access token successfully retrieved
-        gapi.client.load('drive', 'v2', rqstCB);   
-        console.log("A");
-        } else {  // no access token retrieved, force the authorization flow.
-        authButton.style.display = 'block';
-        authButton.onclick = function() {
-            checkAuth(false);
+        function rsvpCB(resp) {
+            var picAlbumLst = '<ul>\n';
+            for (i=0; i<resp.items.length; i++) 
+            picAlbumLst += (
+            '  <li>'+resp.items[i].id+',&nbsp;'+resp.items[i].title+',&nbsp;'+resp.items[i].description+'</li>\n');
+            picAlbumLst += "</ul>\n";
+            $('#container').append(picAlbumLst);
         }
+        function rqstCB() {   //test @ https://developers.google.com/drive/v2/reference/files/list
+            var rv = gapi.client.drive.files.list({
+            'q': '"'+FOLDER_ID+'" in parents and trashed = false',
+            'fields' : 'items(id,title,description)'   //'items(id,title,description,indexableText)'   
+            }).execute(rsvpCB);
         }
-    }
-    // check if the current user has authorized the application.
-    function checkAuth(bNow) {
-        gapi.auth.authorize({'client_id':CLIENT_ID, 'scope':SCOPE, 'immediate':bNow}, onAuthResult);
-    }
-    // called when the client library is loaded, look below
-    function onLoadCB() { 
-        checkAuth(true); 
-    }
+        // authorization server reply
+        function onAuthResult(authResult) {
+            var authButton = document.getElementById('authorizeButton');
+            authButton.style.display = 'none';
+            if (authResult && !authResult.error) {  // access token successfully retrieved
+            gapi.client.load('drive', 'v2', rqstCB);   
+            console.log("A");
+            } else {  // no access token retrieved, force the authorization flow.
+            authButton.style.display = 'block';
+            authButton.onclick = function() {
+                checkAuth(false);
+            }
+            }
+        }
+        // check if the current user has authorized the application.
+        function checkAuth(bNow) {
+            gapi.auth.authorize({'client_id':CLIENT_ID, 'scope':SCOPE, 'immediate':bNow}, onAuthResult);
+        }
+        // called when the client library is loaded, look below
+        function onLoadCB() { 
+            checkAuth(true); 
+        }
     </script>
     <input type="button" id="authorizeButton" style="display: none" value="Authorize" />
   <div id="container">
