@@ -1,72 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="styles/index.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects</title>
-    
-    <script async defer src="https://apis.google.com/js/api.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script async defer src="https://apis.google.com/js/api.js"></script>
     <script src="js/projectsRepo.js"></script>
+    <script src="js/projectsDrive.js"></script>
+    <iframe id="HeaderIframe"src="Components/Layout/header.html?title=Projects" frameborder="0" style="width:100%;"></iframe>
 </head>
 <body>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script>
-        var FOLDER_ID = 'a';    // the folder files reside in
-        var CLIENT_ID = 'CLient';
-        var SCOPE = [
-            'https://www.googleapis.com/auth/drive',
-            'https://www.googleapis.com/auth/drive.file'
-        ];
-
-        function rsvpCB(resp) {
-            var picAlbumLst = '<ul>\n';
-            for (i=0; i<resp.items.length; i++) 
-            picAlbumLst += (
-            '  <li>'+resp.items[i].id+',&nbsp;'+resp.items[i].title+',&nbsp;'+resp.items[i].description+'</li>\n');
-            picAlbumLst += "</ul>\n";
-            $('#container').append(picAlbumLst);
-        }
-        function rqstCB() {   //test @ https://developers.google.com/drive/v2/reference/files/list
-            var rv = gapi.client.drive.files.list({
-            'q': '"'+FOLDER_ID+'" in parents and trashed = false',
-            'fields' : 'items(id,title,description)'   //'items(id,title,description,indexableText)'   
-            }).execute(rsvpCB);
-        }
-        // authorization server reply
-        function onAuthResult(authResult) {
-            var authButton = document.getElementById('authorizeButton');
-            authButton.style.display = 'none';
-            if (authResult && !authResult.error) {  // access token successfully retrieved
-            gapi.client.load('drive', 'v2', rqstCB);   
-            console.log("A");
-            } else {  // no access token retrieved, force the authorization flow.
-            authButton.style.display = 'block';
-            authButton.onclick = function() {
-                checkAuth(false);
-            }
-            }
-        }
-        // check if the current user has authorized the application.
-        function checkAuth(bNow) {
-            gapi.auth.authorize({'client_id':CLIENT_ID, 'scope':SCOPE, 'immediate':bNow}, onAuthResult);
-        }
-        // called when the client library is loaded, look below
-        function onLoadCB() { 
-            checkAuth(true); 
-        }
-    </script>
-    <input type="button" id="authorizeButton" style="display: none" value="Authorize" />
-  <div id="container">
-  </div>
-    <script src="https://apis.google.com/js/client.js?onload=onLoadCB"></script>
-    <input type="button" id="authorizeButton" style="display: none" value="Authorize" />
-    <div id="container">
-    </div>
     <h2>Projects</h2>
     <h3>Drive:</h3>
+    <div>Trabajo en progreso... vuelva mas pronto</div>
     <ul id="file-list"></ul>
     <h3>Github Repos:</h3>
     <ul id="repo-list"></ul>
 </body>
+<footer>
+    <iframe src="Components/Layout/footer.html" frameborder="0" style="width:100%;"></iframe>
+</footer>
 </html>
+
