@@ -2,7 +2,7 @@ async function getPublicRepositories(username) {
     try {
         const response = await fetch(`https://api.github.com/users/${username}/repos`);
         const repos = await response.json();
-        const publicRepos = repos.filter(repo => !repo.private).map(repo => repo.name);
+        const publicRepos = repos.filter(repo => !repo.private & repo.name != "ElR0bot0").map(repo => repo.name);
         return publicRepos;
     } catch (error) {
         console.error('Error fetching public repositories:', error);
@@ -21,17 +21,6 @@ async function displayPublicRepositories() {
         listItem.appendChild(link);
         repoListElement.appendChild(listItem);
     });
-}
-async function getReadmeContent(username, repoName) {
-    try {
-        const response = await fetch(`https://api.github.com/repos/${username}/${repoName}/readme`);
-        const data = await response.json();
-        const decodedContent = atob(data.content);
-        return decodedContent;
-    } catch (error) {
-        console.error('Error fetching README:', error);
-        return null;
-    }
 }
 
 

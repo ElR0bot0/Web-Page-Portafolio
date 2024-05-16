@@ -18,6 +18,9 @@ async function displayRepoReadme() {
     const repo = params.get('repo');
     const readmeContentElement = document.getElementById('readme-content');
     if (repo) {
+        const headerIframe = document.getElementById('HeaderIframe');
+        const reponame = repo.replace(/-/g, ' ');
+        headerIframe.src = `header.html?title=${reponame}`;
         const readme = await getRepoReadme('ElR0bot0', repo);
         if (typeof marked.parse === 'function') {
             readmeContentElement.innerHTML = marked.parse(readme);
