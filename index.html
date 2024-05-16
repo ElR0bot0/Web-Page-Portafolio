@@ -1,34 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="styles/index.css">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="styles/index.css">
+    <iframe id="HeaderIframe"src="Components/Layout/header.html?title=Home" frameborder="0" style="width:100%;"></iframe>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Portfolio</h1>
-            <nav>
-                <ul style="display: flex;">
-                    <li class="ListItem"><a href="index.html">Home</a></li>
-                    <li class="ListItem"><a href="about.html">About</a></li>
-                    <li class="ListItem"><a href="projects.html">Projects</a></li>
-                    <li class="ListItem"><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-    </header>
-    <main>
-        <section>
-            <iframe id="about-iframe" src="about.html" width="600" height="300px" frameborder="0"></iframe>
-        </section>
-        <section>
-            <iframe id="projects-iframe" src="projects.html" width="600" frameborder="0"></iframe>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 My Portfolio</p>
-    </footer>
-    <script src="js/script.js"></script>
+
 </body>
+<footer>
+    <iframe src="Components/Layout/footer.html" frameborder="0" style="width:100%;"></iframe>
+</footer>
 </html>
