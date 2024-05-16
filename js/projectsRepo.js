@@ -17,7 +17,7 @@ async function displayPublicRepositories() {
         const listItem = document.createElement('li');
         const link = document.createElement('a');
         link.href = `projectinfo.html?repo=${encodeURIComponent(repo)}`;
-        link.textContent = repo;
+        link.textContent = repo.replace(/-/g, ' ');
         listItem.appendChild(link);
         repoListElement.appendChild(listItem);
     });
