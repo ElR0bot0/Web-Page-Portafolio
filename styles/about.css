@@ -4,3 +4,33 @@ header {
     padding: 10px 0;
     text-align: center;
 }
+
+ul {
+    width: 100%;
+    overflow-x: auto;
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    height: 5rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    border: 1px solid;
+    margin: 0rem 1rem 1rem 1rem;
+}
+li:nth-child(even) {
+    background-color: #474747;
+    border-color: #1F1F1F;
+    color: #fff;
+}
+a {
+    color: #a9c7d4;
+}
+li:nth-child(odd) {
+    background-color: #1F1F1F;
+    border-color: #474747;
+    color: #fff;
+}
