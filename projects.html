@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="styles/index.css">
+<link rel="stylesheet" href="styles/projects.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +13,17 @@
     <iframe id="HeaderIframe"src="/header.html?title=Projects" frameborder="0" style="width:100%;"></iframe>
 </head>
 <body>
-    <h2>Projects</h2>
-    <h3>Drive:</h3>
-    <div>Trabajo en progreso... vuelva mas pronto</div>
-    <ul id="file-list"></ul>
-    <h3>Github Repos:</h3>
-    <ul id="repo-list"></ul>
+    <div style="display: flex;justify-content: space-evenly;">
+        <div class="column">
+            <h3>Drive:</h3>
+            <div>Trabajo en progreso... vuelva mas pronto</div>
+            <ul id="file-list"></ul>
+        </div>
+        <div class="column">
+            <h3>Public github projects:</h3>
+            <ul id="repo-list"></ul>
+        </div>
+    </div>
 </body>
 <footer>
     <iframe src="/footer.html" frameborder="0" style="width:100%;"></iframe>
